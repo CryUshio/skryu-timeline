@@ -1,0 +1,107 @@
+{
+  "name": "picasso-timeline",
+  "version": "1.0.0",
+  "description": "",
+  "browser": "lib/index.b.js",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
+  "author": "charryhuang",
+  "license": "MIT",
+  "scripts": {
+    "dev": "npx babel -w --extensions .ts,tsx src -d lib --copy-files",
+    "build": "npx rollup -c",
+    "example": "npm run browser & npm run hs",
+    "hs": "hs -c-1 --cors",
+    "browser": "open-cli http://localhost:8080/doc/example/index.html",
+    "prepublishOnly": "npm run test && npm run build",
+    "lint:js": "eslint --config .eslintrc --fix --ext .js,.jsx,.ts,.tsx src",
+    "lint:style": "stylelint --fix src/**/*.{less,scss,css}",
+    "test": "jest --rootDir ./src --passWithNoTests",
+    "test:w": "jest --watchAll --rootDir ./src --passWithNoTests"
+  },
+  "dependencies": {
+    "es6-promise": "^4.2.8",
+    "isomorphic-fetch": "^2.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@commitlint/cli": "^8.1.0",
+    "@tencent/imflow-changelog": "^1.2.8",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.6.2",
+    "@types/prop-types": "^15.7.1",
+    "@types/react": "^16.8.23",
+    "@types/react-router-dom": "^4.3.4",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.1.0",
+    "babel-plugin-import": "^1.12.0",
+    "commitizen": "^4.0.3",
+    "commitlint-config-cz": "^0.12.1",
+    "cz-customizable": "^6.2.0",
+    "eslint": "^6.0.1",
+    "eslint-config-imweb": "^0.2.19",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "http-server": "^0.11.1",
+    "husky": "^3.0.0",
+    "jest": "^24.0.0",
+    "lint-staged": "^9.2.0",
+    "nodemon": "^1.19.1",
+    "open-cli": "^5.0.0",
+    "prettier": "^1.18.2",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.25.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "stylelint": "^10.1.0",
+    "stylelint-config-css-modules": "^1.4.0",
+    "stylelint-config-recommended": "^2.2.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-scss": "^3.9.1",
+    "ts-jest": "^24.0.2",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.4"
+  },
+  "lint-staged": {
+    "*.{css,less,scss}": [
+      "prettier --write",
+      "stylelint --fix",
+      "git add"
+    ],
+    "*.{json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{jsx,js}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "node_modules/@tencent/imflow-changelog/cz-config.js"
+    }
+  }
+}
