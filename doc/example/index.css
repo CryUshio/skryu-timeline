@@ -10,6 +10,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #000;
+  user-select: none;
 }
 
 .main {
@@ -32,13 +33,20 @@ body {
   background-color: transparent;
   border: 1px solid white;
   color: white;
-  transition: all 0.3s;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s, opacity 1s;
 }
 
 .main-btn:hover {
   background-color: #fff;
   border: 1px solid white;
   color: black;
+}
+
+.main-btn.main-btn--hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .main-bg {
@@ -52,7 +60,57 @@ body {
   background-position: center center;
 }
 
+.main-content {
+  position: relative;
+  transition: all 1.5s;
+}
+
 .main-section {
   height: 100vh;
-  position: relative;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.main-section.section-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s;
+}
+
+.main-section.section-1 h1 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 32px;
+  letter-spacing: 8px;
+}
+
+.main-section.section-1 p {
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+.main-section.section-1.fade-in {
+  opacity: 1;
+}
+
+.main-section.section-1.fade-out {
+  transition: opacity 0.7s linear;
+  opacity: 0;
+}
+
+.main-section.section-1.fade-out h1 {
+  transition: all 0.7s linear;
+  transform: translateY(-96px);
+}
+
+.main-section.section-1.fade-out p {
+  transition: all 0.7s linear;
+  transform: translateY(-72px);
 }
