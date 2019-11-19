@@ -7,5 +7,5 @@ A timeline management process
 # Start
 
 ```
-npm run dev
+npm run example
 ```
