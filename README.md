@@ -1,11 +1,76 @@
-# Picasso-timeline
+# Picasso-Timeline
 
-A timeline management process
+A timeline management progress
 
 组件内引用了 `Promise`，如果有必要，请自行引入 `polyfill`
 
-# Start
+# Demo
 
 ```
 npm run example
+```
+
+# API
+
+#### add
+
+Add handler to process.
+
+```
+new Timeline().add(option);
+
+option {
+  handler: Function;
+  wait?: number;
+}
+```
+
+#### action
+
+Add action to process.
+
+```
+new Timeline().action(option);
+
+option {
+  actionName?: string; // default ''
+  handler?: Function;
+  wait?: number;
+}
+```
+
+#### run
+
+Start the timeline.
+
+```
+new Timeline().run();
+```
+
+#### callback
+
+Syntactic sugar of `action`.
+
+```
+new Timeline().callback(param);
+
+param: Function
+```
+
+#### trigger
+
+Dispatch action.
+
+```
+new Timeline().callback(param);
+
+param?: string // actionName
+```
+
+#### abort
+
+Abort the timeline.
+
+```
+new Timeline().abort();
 ```

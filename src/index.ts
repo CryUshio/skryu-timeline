@@ -109,7 +109,7 @@ class Timeline {
     return this;
   };
 
-  action = ({ actionName, handler, wait }: TimelineStep): Timeline => {
+  action = ({ actionName, handler, wait }: TimelineAction): Timeline => {
     actionName = actionName || '';
 
     if (!this._actionMap[String(actionName)]) {
@@ -130,11 +130,12 @@ class Timeline {
     return this;
   };
 
-  trigger = (name: string) => {
+  trigger = (name?: string) => {
     if (this._isLock()) {
       return;
     }
 
+    name = name || '';
     // set trigger flag
     this._triggerName = name;
     // jump to action

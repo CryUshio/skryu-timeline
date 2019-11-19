@@ -7,7 +7,14 @@ declare interface TimelineAdd {
   wait?: number;
 }
 
-declare interface TimelineStep extends TimelineAdd {
+declare interface TimelineAction {
+  actionName?: string | boolean;
+  handler?: Function;
+  wait?: number;
+}
+
+declare interface TimelineStep {
   actionName: string | boolean;
+  handler: Function;
   wait: number;
 }
