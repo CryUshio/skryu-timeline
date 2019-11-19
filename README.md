@@ -14,7 +14,7 @@ npm run example
 
 ### add
 
-Add handler to process.
+Add handler to timeline.
 
 ```
 new Timeline().add(option);
@@ -27,7 +27,7 @@ option {
 
 ### action
 
-Add action to process. An action will block the timeline until you call a `trigger` function.
+Add action to timeline. An action will block the timeline until you call a `trigger` function.
 
 ```
 new Timeline().action(option);
@@ -57,7 +57,7 @@ new Timeline().callback(handler:? Function);
 
 ### trigger
 
-Dispatch action.
+Dispatch the action.
 
 ```
 new Timeline().callback(actionName?: string);
