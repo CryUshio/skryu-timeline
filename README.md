@@ -27,7 +27,7 @@ option {
 
 ### action
 
-Add action to process.
+Add action to process. An action will block the timeline until you call a `trigger` function.
 
 ```
 new Timeline().action(option);
