@@ -1,6 +1,6 @@
 # Picasso-Timeline
 
-A timeline management progress
+A timeline management project.
 
 组件内引用了 `Promise`，如果有必要，请自行引入 `polyfill`
 
