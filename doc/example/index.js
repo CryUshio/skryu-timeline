@@ -63,9 +63,24 @@ timeline1
   .action({
     actionName: 'click2',
     handler: () => {
-      section2.removeEventListener('click', click2);
-      section2.classList.add('fade-out');
+      section2.classList.add('fade-out-1');
     },
     wait: 1500,
+  })
+  .action({
+    actionName: 'click2',
+    handler: () => {
+      section2.removeEventListener('click', click2);
+      section2.classList.add('fade-out-2');
+    },
+    wait: 1000,
+  })
+  .add({
+    handler: () => {
+      section3.classList.add('fade-in');
+    },
+  })
+  .callback(() => {
+    console.info('The end.');
   })
   .run();

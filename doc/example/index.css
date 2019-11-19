@@ -49,6 +49,23 @@ body {
   transform: translateX(-50%);
 }
 
+.section-btn {
+  padding: 16px 32px;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  transition: background-color 0.3s, border 0.3s, color 0.3s;
+}
+
+.section-btn:hover {
+  background-color: #fff;
+  border: 1px solid white;
+  color: black;
+}
+
 /* section 1 */
 .main-section.section-1 {
   display: flex;
@@ -80,14 +97,7 @@ body {
   position: absolute;
   bottom: 80px;
   left: 50%;
-  padding: 16px 32px;
   transform: translateX(-50%);
-  border-radius: 4px;
-  font-size: 18px;
-  cursor: pointer;
-  background-color: transparent;
-  border: 1px solid white;
-  color: white;
   opacity: 0;
   transition: background-color 0.3s, border 0.3s, color 0.3s, opacity 0.5s;
 }
@@ -146,31 +156,56 @@ body {
 
 .main-section.section-2 .section-phone {
   position: absolute;
-  right: 400px;
-  bottom: 0;
+  right: 50%;
+  top: 50%;
   width: 230px;
   height: 476px;
-  padding: 69px 19px;
   background-image: url(./iphoneframe.png);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  transform: translateY(110%);
+  transform: translateY(60%) translateX(70%);
   box-sizing: border-box;
 }
 
-.main-section.section-2 .section-phone img {
+.main-section.section-2 .section-phone .phone-page {
+  position: absolute;
+  top: 69px;
+  left: 19px;
   width: 192px;
   height: 338px;
+  overflow: hidden;
+}
+
+.main-section.section-2 .section-phone .phone-page img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   opacity: 0;
 }
 
-.main-section.section-2 .section-phone .phone-1 {
+.main-section.section-2 .section-phone .phone-page .phone-1 {
   opacity: 1;
+  z-index: 2;
 }
 
-.main-section.section-2 .section-phone .phone-2 {
-  transform: scale(0);
+.main-section.section-2 .section-phone .phone-page .phone-2 {
+  transform: scale(0.5);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.main-section.section-2 .section2-hint {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 60px;
+  font-size: 24px;
+  font-weight: 100;
+  text-align: center;
+  opacity: 0;
 }
 
 .main-section.section-2.fade-in {
@@ -192,22 +227,88 @@ body {
 
 .main-section.section-2.fade-in .section-phone {
   transition: all 1s;
-  transform: translateY(-10%);
+  transform: translateY(-30%) translateX(70%);
 }
 
-.main-section.section-2.fade-out .section2-desc {
+.main-section.section-2.fade-out-1 .section2-desc {
   transition: all 1s;
   opacity: 0;
   transform: translateY(0) scale(0.5);
 }
 
-.main-section.section-2.fade-out .section-brand {
+.main-section.section-2.fade-out-1 .section-brand {
   transition: all 1s;
   opacity: 0;
   transform: translateY(-20%) scale(0.5);
 }
 
-.main-section.section-2.fade-out .section-phone {
+.main-section.section-2.fade-out-1 .section-phone {
   transition: all 1s;
-  transform: translateX(-50%) translateY(-50%) scale(1.3) rotate(-90deg);
+  transform: translateX(50%) translateY(-50%) scale(1.3) rotate(-90deg);
+}
+
+.main-section.section-2.fade-out-1 .phone-page .phone-1 {
+  transition: all 1s;
+  transform: scale(0.95) translateX(120%);
+  opacity: 0.9;
+}
+
+.main-section.section-2.fade-out-1 .phone-page .phone-2 {
+  transition: all 0.8s 0.2s;
+  visibility: visible;
+  transform: scale(1);
+  opacity: 1;
+}
+
+.main-section.section-2.fade-out-1 .section2-hint {
+  transition: all 1s;
+  opacity: 1;
+  transform: translateY(-48px);
+}
+
+.main-section.section-2.fade-out-2 .section-phone {
+  transition: all 1s;
+  transform: translateX(50%) translateY(80%) scale(1.3) rotate(-90deg);
+}
+
+.main-section.section-2.fade-out-2 .section2-hint {
+  transition: all 1s;
+  opacity: 0.5;
+  transform: translateY(400px);
+}
+
+/* section 3 */
+.main-section.section-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-section.section-3 .section3-content {
+  text-align: center;
+  transform: scale(0.5);
+}
+
+.main-section.section-3 .section3-content .section3-title {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 32px;
+  font-weight: 100;
+}
+
+.main-section.section-3 .section3-content .section-btn {
+  padding: 12px 24px;
+  font-size: 14px;
+}
+
+.main-section.section-3.fade-in {
+  transition: all 1s;
+  opacity: 1;
+  visibility: visible;
+}
+
+.main-section.section-3.fade-in .section3-content {
+  transition: all 1s;
+  transform: scale(1);
 }
