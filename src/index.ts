@@ -6,7 +6,8 @@ import { sleep } from './utils';
  * @function run - start timeline
  * @function trigger - trigger action
  * @function callback - dispatch when process done
- * @function abort - stop timeline and reset
+ * @function abort - stop timeline
+ * @function reset - reset timeline
  *
  * @demo
  * const timeline = new Timeline().add().add().action({ actionName: '1' }).add().callback().run();
@@ -19,9 +20,6 @@ class Timeline {
   // progress
   private _step: number = 0;
 
-  // callback when process end
-  private _callback: Function = () => {};
-
   // if lock when progress running
   private _lockWhenRunning: boolean;
 
@@ -30,6 +28,9 @@ class Timeline {
 
   // action map
   private _actionMap: { [actionName: string]: number[] } = {};
+
+  // copy of action map
+  private $$actionMap: { [actionName: string]: number[] } = {};
 
   // triggered action name
   private _triggerName: string | boolean = false;
@@ -57,19 +58,6 @@ class Timeline {
   };
 
   private _tick = (step: number) => {
-    if (this._abort) {
-      this._lock = false;
-      this._abort = false;
-      return;
-    }
-
-    const processLength = this._process.length;
-    if (step >= processLength) {
-      this._lock = false;
-      this._callback();
-      return;
-    }
-
     const { actionName, handler, wait } = this._process[step];
     // triggered action
     if (actionName !== false) {
@@ -85,8 +73,19 @@ class Timeline {
     Promise.resolve(handler()).then(
       () => {
         sleep(wait).then(() => {
-          // if triggered action, the old process should be killed
-          if (step < this._step) {
+          if (this._abort) {
+            this._lock = false;
+            this._abort = false;
+            return;
+          }
+          // if triggered or action, the old process should be killed
+          if (step !== this._step) {
+            return;
+          }
+
+          const finalStep = this._process.length - 1;
+          if (step >= finalStep) {
+            this._lock = false;
             return;
           }
 
@@ -114,8 +113,10 @@ class Timeline {
 
     if (!this._actionMap[String(actionName)]) {
       this._actionMap[String(actionName)] = [];
+      this.$$actionMap[String(actionName)] = [];
     }
     this._actionMap[String(actionName)].push(this._process.length);
+    this.$$actionMap[String(actionName)].push(this._process.length);
 
     this._push({
       actionName,
@@ -153,7 +154,15 @@ class Timeline {
     this._tick(this._step);
     return {
       abort: this._triggerAbort,
+      reset: this.reset,
+      trigger: this.trigger,
     };
+  };
+
+  reset = () => {
+    this._abort = true;
+    this._actionMap = JSON.parse(JSON.stringify(this.$$actionMap));
+    this._step = 0;
   };
 }
 

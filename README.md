@@ -74,3 +74,15 @@ Abort the timeline.
 ```
 new Timeline().abort();
 ```
+
+#### reset
+
+Abort and rest the timeline.
+
+```
+new Timeline().reset();
+```
+
+# Hint
+
+`abort` and `reset` can only be called after `run`.
