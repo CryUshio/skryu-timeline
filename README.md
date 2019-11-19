@@ -12,7 +12,7 @@ npm run example
 
 # API
 
-#### add
+### add
 
 Add handler to process.
 
@@ -25,7 +25,7 @@ option {
 }
 ```
 
-#### action
+### action
 
 Add action to process.
 
@@ -39,7 +39,7 @@ option {
 }
 ```
 
-#### run
+### run
 
 Start the timeline.
 
@@ -47,7 +47,7 @@ Start the timeline.
 new Timeline().run();
 ```
 
-#### callback
+### callback
 
 Syntactic sugar of `action`.
 
@@ -55,7 +55,7 @@ Syntactic sugar of `action`.
 new Timeline().callback(handler:? Function);
 ```
 
-#### trigger
+### trigger
 
 Dispatch action.
 
@@ -63,7 +63,7 @@ Dispatch action.
 new Timeline().callback(actionName?: string);
 ```
 
-#### abort
+### abort
 
 Abort the timeline.
 
@@ -71,7 +71,7 @@ Abort the timeline.
 new Timeline().abort();
 ```
 
-#### reset
+### reset
 
 Abort and rest the timeline.
 
