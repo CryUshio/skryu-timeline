@@ -159,10 +159,13 @@ class Timeline {
     };
   };
 
-  reset = () => {
+  reset = (handler?: Function) => {
     this._abort = true;
     this._actionMap = JSON.parse(JSON.stringify(this.$$actionMap));
     this._step = 0;
+    if (handler) {
+      handler();
+    }
   };
 }
 

@@ -52,9 +52,7 @@ new Timeline().run();
 Syntactic sugar of `action`.
 
 ```
-new Timeline().callback(param);
-
-param: Function
+new Timeline().callback(handler:? Function);
 ```
 
 #### trigger
@@ -62,9 +60,7 @@ param: Function
 Dispatch action.
 
 ```
-new Timeline().callback(param);
-
-param?: string // actionName
+new Timeline().callback(actionName?: string);
 ```
 
 #### abort
@@ -80,7 +76,7 @@ new Timeline().abort();
 Abort and rest the timeline.
 
 ```
-new Timeline().reset();
+new Timeline().reset(handler?: Function);
 ```
 
 # Hint
