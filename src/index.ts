@@ -52,19 +52,6 @@ class Timeline {
     return false;
   };
 
-  private _triggerAction = (name: string) => {
-    if (this._isLock()) {
-      return;
-    }
-
-    // set trigger flag
-    this._triggerName = name;
-    // jump to action
-    const actionIndex = this._actionMap[name].shift();
-    this._step = typeof actionIndex !== 'undefined' ? actionIndex : this._step;
-    this.run();
-  };
-
   private _triggerAbort = () => {
     this._abort = true;
   };
@@ -143,6 +130,19 @@ class Timeline {
     return this;
   };
 
+  trigger = (name: string) => {
+    if (this._isLock()) {
+      return;
+    }
+
+    // set trigger flag
+    this._triggerName = name;
+    // jump to action
+    const actionIndex = this._actionMap[name].shift();
+    this._step = typeof actionIndex !== 'undefined' ? actionIndex : this._step;
+    this.run();
+  };
+
   run = () => {
     if (this._isLock()) {
       return;
@@ -152,7 +152,6 @@ class Timeline {
     this._tick(this._step);
     return {
       abort: this._triggerAbort,
-      trigger: this._triggerAction,
     };
   };
 }
