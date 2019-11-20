@@ -59,9 +59,9 @@ class Timeline {
 
   private _tick = (step: number) => {
     const { actionName, handler, wait } = this._process[step];
-    // triggered action
+    // if action
     if (actionName !== false) {
-      // triggered action is not execute in order
+      // triggered action is not executed in order
       if (actionName !== this._triggerName) {
         this._lock = false;
         return;
@@ -78,7 +78,7 @@ class Timeline {
             this._abort = false;
             return;
           }
-          // if triggered or action, the old process should be killed
+          // if triggered an action, the old process should be killed
           if (step !== this._step) {
             return;
           }
@@ -136,7 +136,7 @@ class Timeline {
       return;
     }
 
-    name = name || '';
+    name = String(name) || '';
     // set trigger flag
     this._triggerName = name;
     // jump to action
@@ -146,10 +146,6 @@ class Timeline {
   };
 
   run = () => {
-    if (this._isLock()) {
-      return;
-    }
-
     this._lock = true;
     this._tick(this._step);
     return {
