@@ -52,7 +52,7 @@ new Timeline().run();
 Syntactic sugar of `action`.
 
 ```
-new Timeline().callback(handler:? Function);
+new Timeline().callback(handler: Function);
 ```
 
 ### trigger
