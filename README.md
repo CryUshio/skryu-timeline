@@ -73,7 +73,7 @@ new Timeline().abort();
 
 ### reset
 
-Abort and rest the timeline.
+Abort and reset the timeline.
 
 ```
 new Timeline().reset(handler?: Function);
