@@ -66,7 +66,7 @@ timeline1
     wait: 1000,
   })
   .action({
-    actionName: 'click1',
+    name: 'click1',
     handler: () => {
       section1Btn.removeEventListener('click', click1);
       section1Btn.classList.remove('show');
@@ -90,14 +90,14 @@ timeline1
     },
   })
   .action({
-    actionName: 'click2',
+    name: 'click2',
     handler: () => {
       section2.classList.add('fade-out-1');
     },
     wait: 1500,
   })
   .action({
-    actionName: 'click2',
+    name: 'click2',
     handler: () => {
       section2.removeEventListener('click', click2);
       section2.classList.add('fade-out-2');
@@ -116,7 +116,7 @@ timeline1
     },
   })
   .action({
-    actionName: 'click3',
+    name: 'click3',
     handler: () => {
       section3Btn.removeEventListener('click', click3);
       timeline2.run();

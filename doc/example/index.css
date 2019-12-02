@@ -58,6 +58,7 @@ body {
   background-color: transparent;
   border: 1px solid white;
   outline: none;
+  text-decoration: none;
   color: white;
   transition: background-color 0.3s, border 0.3s, color 0.3s;
 }

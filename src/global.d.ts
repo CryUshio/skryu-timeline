@@ -8,7 +8,7 @@ declare interface TimelineAdd {
 }
 
 declare interface TimelineAction {
-  actionName?: string | boolean;
+  name?: string | boolean;
   handler?: Function;
   wait?: number;
 }

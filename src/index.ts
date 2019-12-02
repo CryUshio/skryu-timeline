@@ -113,8 +113,8 @@ class Timeline {
     return this;
   };
 
-  action = ({ actionName, handler, wait }: TimelineAction): Timeline => {
-    actionName = actionName || '';
+  action = ({ name, handler, wait }: TimelineAction): Timeline => {
+    const actionName = name || '';
 
     if (!this._actionMap[String(actionName)]) {
       this._actionMap[String(actionName)] = [];
