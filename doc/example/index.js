@@ -5,8 +5,11 @@ const section1 = document.querySelector('.section-1');
 const section1Btn = document.querySelector('.section-1 .section-btn');
 const section2 = document.querySelector('.section-2');
 const section3 = document.querySelector('.section-3');
+const section3Btn = document.querySelector('.section-3 button.section-btn');
 
 const timeline1 = new Timeline();
+const timeline2 = new Timeline();
+
 const click1 = () => {
   console.info('skr: click1');
   timeline1.trigger('click1');
@@ -15,6 +18,32 @@ const click2 = () => {
   console.info('skr: click2');
   timeline1.trigger('click2');
 };
+const click3 = () => {
+  console.info('skr: click3');
+  timeline1.trigger('click3');
+};
+
+timeline2
+  .add({
+    handler: () => {
+      section3.classList.add('fade-out');
+      mainContent.setAttribute('style', '');
+    },
+    wait: 1000,
+  })
+  .add({
+    handler: () => {
+      mainContent.className = 'main-content';
+      section1.className = 'main-section section-1';
+      section2.className = 'main-section section-2';
+      section3.className = 'main-section section-3';
+    },
+  })
+  .callback(() => {
+    console.info('skr: timeline2 reset timeline1');
+    timeline1.reset().run();
+    timeline2.reset();
+  });
 
 timeline1
   .add({
@@ -78,6 +107,19 @@ timeline1
   .add({
     handler: () => {
       section3.classList.add('fade-in');
+    },
+    wait: 1000,
+  })
+  .add({
+    handler: () => {
+      section3Btn.addEventListener('click', click3);
+    },
+  })
+  .action({
+    actionName: 'click3',
+    handler: () => {
+      section3Btn.removeEventListener('click', click3);
+      timeline2.run();
     },
   })
   .callback(() => {

@@ -50,14 +50,21 @@ body {
 }
 
 .section-btn {
+  display: inline-block;
   padding: 16px 32px;
   border-radius: 4px;
   font-size: 18px;
   cursor: pointer;
   background-color: transparent;
   border: 1px solid white;
+  outline: none;
   color: white;
   transition: background-color 0.3s, border 0.3s, color 0.3s;
+}
+
+.section-btn:visited {
+  border: 1px solid white;
+  color: white;
 }
 
 .section-btn:hover {
@@ -124,12 +131,12 @@ body {
 }
 
 .main-section.section-1.fade-out .section-title {
-  transition: all 0.5s linear;
+  transition: all 0.7s linear;
   transform: translateY(-96px);
 }
 
 .main-section.section-1.fade-out .section-desc {
-  transition: all 0.5s linear;
+  transition: all 0.7s linear;
   transform: translateY(-72px);
 }
 
@@ -300,6 +307,7 @@ body {
 .main-section.section-3 .section3-content .section-btn {
   padding: 12px 24px;
   font-size: 14px;
+  line-height: 20px;
 }
 
 .main-section.section-3.fade-in {
@@ -311,4 +319,9 @@ body {
 .main-section.section-3.fade-in .section3-content {
   transition: all 1s;
   transform: scale(1);
+}
+
+.main-section.section-3.fade-out {
+  transition: all 1s;
+  opacity: 0;
 }

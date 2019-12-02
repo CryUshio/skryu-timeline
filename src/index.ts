@@ -55,6 +55,9 @@ class Timeline {
 
   private _triggerAbort = () => {
     this._abort = true;
+    return {
+      reset: this.reset,
+    };
   };
 
   private _tick = (step: number) => {
@@ -69,6 +72,8 @@ class Timeline {
       // reset trigger flag
       this._triggerName = false;
     }
+
+    console.info('skr: _tick()', this._step);
 
     Promise.resolve(handler()).then(
       () => {
@@ -147,6 +152,7 @@ class Timeline {
 
   run = () => {
     this._lock = true;
+    this._abort = false;
     this._tick(this._step);
     return {
       abort: this._triggerAbort,
@@ -162,6 +168,9 @@ class Timeline {
     if (handler) {
       handler();
     }
+    return {
+      run: this.run,
+    };
   };
 }
 
