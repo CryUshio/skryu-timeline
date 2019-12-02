@@ -53,8 +53,11 @@ class Timeline {
     return false;
   };
 
-  private _triggerAbort = () => {
+  private _triggerAbort = (callback?: Function) => {
     this._abort = true;
+    if (callback) {
+      callback();
+    }
     return {
       reset: this.reset,
     };
@@ -113,7 +116,7 @@ class Timeline {
     return this;
   };
 
-  action = ({ name, handler, wait }: TimelineAction): Timeline => {
+  action = ({ name, handler, wait }: TimelineAction = {}): Timeline => {
     const actionName = name || '';
 
     if (!this._actionMap[String(actionName)]) {

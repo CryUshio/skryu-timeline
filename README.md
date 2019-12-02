@@ -33,7 +33,7 @@ Add action to timeline. An action will block the timeline until you call a `trig
 new Timeline().action(option);
 
 option {
-  actionName?: string; // default ''
+  name?: string; // default ''
   handler?: Function;
   wait?: number;
 }
@@ -49,7 +49,7 @@ new Timeline().run();
 
 ### callback
 
-Syntactic sugar of `action`.
+Syntactic sugar of `add`.
 
 ```
 new Timeline().callback(handler: Function);
@@ -60,7 +60,7 @@ new Timeline().callback(handler: Function);
 Dispatch the action.
 
 ```
-new Timeline().callback(actionName?: string);
+new Timeline().trigger(name?: string);
 ```
 
 ### abort
@@ -68,7 +68,7 @@ new Timeline().callback(actionName?: string);
 Abort the timeline.
 
 ```
-new Timeline().abort();
+new Timeline().run().abort(handler?: Function);
 ```
 
 ### reset
