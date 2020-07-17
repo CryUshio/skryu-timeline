@@ -1,6 +1,6 @@
 {
   "name": "skryu-timeline",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "A timeline management project.",
   "browser": "lib/index.b.js",
   "main": "lib/index.js",
@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "npx babel -w --extensions .ts,tsx src -d lib --copy-files",
     "build": "npx rollup -c",
+    "release": "npm publish",
     "example": "npm run hs & npm run browser",
     "hs": "hs -c-1 --cors",
     "browser": "open-cli http://localhost:8080/doc/example/index.html",
