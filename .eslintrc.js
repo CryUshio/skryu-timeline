@@ -6,15 +6,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
-    useJSXTextNode: true,
-  },
   rules: {
-    'react/sort-comp': 0,
-    'react/jsx-first-prop-new-line': 0,
     'import/extensions': 0,
     'no-console': 0,
     'import/prefer-default-export': 0,

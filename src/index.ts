@@ -76,8 +76,6 @@ class Timeline {
       this._triggerName = false;
     }
 
-    console.info('skr: _tick()', this._step);
-
     Promise.resolve(handler()).then(
       () => {
         sleep(wait).then(() => {

@@ -1,7 +1,18 @@
 // 校验commit消息是否符合规范
 module.exports = {
-  extends: ['@tencent/imflow-changelog', 'cz'],
+  extends: ['@commitlint/config-conventional'],
   rules: {
-    // 自定义检测配置
+    'type-enum': [
+      2,
+      'always',
+      ['upd', 'feat', 'fix', 'refactor', 'docs', 'chore', 'style', 'revert'],
+    ],
+    'type-case': [0],
+    'type-empty': [0],
+    'scope-empty': [0],
+    'scope-case': [0],
+    'subject-full-stop': [0, 'never'],
+    'subject-case': [0, 'never'],
+    'header-max-length': [0, 'always', 72],
   },
 };
