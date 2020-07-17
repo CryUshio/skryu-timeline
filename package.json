@@ -1,6 +1,6 @@
 {
   "name": "skryu-timeline",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "A timeline management project.",
   "browser": "lib/index.b.js",
   "main": "lib/index.js",
