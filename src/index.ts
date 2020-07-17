@@ -132,7 +132,7 @@ class Timeline {
     return this;
   };
 
-  callback = (callback: Function) => {
+  callback = (callback: Function): Timeline => {
     this.add({ handler: callback, wait: 0 });
     return this;
   };
