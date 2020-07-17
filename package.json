@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "npx babel -w --extensions .ts,tsx src -d lib --copy-files",
     "build": "npx rollup -c",
-    "example": "npm run browser & npm run hs",
+    "example": "npm run hs & npm run browser",
     "hs": "hs -c-1 --cors",
     "browser": "open-cli http://localhost:8080/doc/example/index.html",
     "prepublishOnly": "npm run test && npm run build",

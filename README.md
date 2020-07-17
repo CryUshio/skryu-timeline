@@ -1,4 +1,4 @@
-# Picasso-Timeline
+# Skryu-Timeline
 
 A timeline management project.
 
