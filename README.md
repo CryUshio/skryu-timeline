@@ -12,6 +12,53 @@ A timeline management project.
 npm run example
 ```
 
+# Quick start
+
+```html
+<main class="main">
+  <div class="main-bg"></div>
+  <section class="main-content">
+    <section class="main-section">
+      <h1 class="section-title">TIMELINE DEMO</h1>
+      <p class="section-desc">AN EXPERIMENT BY PICASSO</p>
+      <button class="section-btn">NEXT</button>
+    </section>
+  </section>
+</main>
+<script>
+  const mainContent = document.querySelector('.main-content');
+  const section = document.querySelector('.main-section');
+  const btn = document.querySelector('.section-btn');
+  const timeline = new Timeline();
+  timeline
+    .add({
+      handler: () => {
+        mainContent.setAttribute('style', 'background-color: rgba(0, 0, 0, .5)');
+      },
+      wait: 1000,
+    })
+    .add({
+      handler: () => {
+        section.classList.add('fade-in');
+        btn.addEventListener('click', () => {
+          timeline.trigger();
+        });
+      },
+    })
+    .action({
+      handler: () => {
+        // do something you want
+      },
+    })
+    .add({
+      handler: () => {
+        section.classList.add('fade-out');
+      },
+    })
+    .run();
+</script>
+```
+
 # API
 
 ### add
