@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/chym123/skryu-timeline/compare/v1.3.0...v1.5.0) (2020-07-20)
+
+### Features
+
+- fix ts hint ([3c3f514](https://github.com/chym123/skryu-timeline/commit/3c3f51452ebe43ff383facbf752132b9ecb58b04))
+- update readme ([b30704e](https://github.com/chym123/skryu-timeline/commit/b30704eb271c3c28f5d9ac3bf7265eceb57a7b40))
+
 ## [1.3.0](https://github.com/chym123/skryu-timeline/compare/v1.2.0...v1.3.0) (2020-07-17)
 
 ### Features
