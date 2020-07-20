@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "npx babel -w --extensions .ts,tsx src -d lib --copy-files",
-    "build": "npx rollup -c",
+    "build": "npx rollup -c && tsc",
     "release": "standard-version",
     "example": "npm run hs & npm run browser",
     "hs": "hs -c-1 --cors",
