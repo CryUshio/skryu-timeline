@@ -1,3 +1,4 @@
+import { TimelineStep, TimelineType, TimelineAdd, TimelineAction } from './types';
 import { sleep } from './utils';
 
 /**
@@ -38,7 +39,8 @@ class Timeline {
   // abort flag
   private _abort: boolean = false;
 
-  constructor({ lockWhenRunning }: TimelineType = {}) {
+  constructor(options: TimelineType) {
+    const { lockWhenRunning } = options || {};
     this._lockWhenRunning = typeof lockWhenRunning === 'undefined' ? true : lockWhenRunning;
   }
 
@@ -105,7 +107,8 @@ class Timeline {
     );
   };
 
-  add = ({ handler, wait }: TimelineAdd): Timeline => {
+  add = (options: TimelineAdd): Timeline => {
+    const { handler, wait } = options;
     this._push({
       actionName: false,
       handler: handler || (() => {}),
@@ -114,7 +117,8 @@ class Timeline {
     return this;
   };
 
-  action = ({ name, handler, wait }: TimelineAction = {}): Timeline => {
+  action = (options: TimelineAction): Timeline => {
+    const { name, handler, wait } = options || {};
     const actionName = name || '';
 
     if (!this._actionMap[String(actionName)]) {
