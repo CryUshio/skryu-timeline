@@ -39,7 +39,7 @@ class Timeline {
   // abort flag
   private _abort: boolean = false;
 
-  constructor(options: TimelineType) {
+  constructor(options?: TimelineType) {
     const { lockWhenRunning } = options || {};
     this._lockWhenRunning = typeof lockWhenRunning === 'undefined' ? true : lockWhenRunning;
   }
